@@ -3,7 +3,7 @@
     <string name="pointUnit">P</string>
 
     <string name="splash_title">起動</string>
-    <string name="splash_user_id_label">ユーザーID: </string>
+    <string name="splash_user_id_label">ユーザーID: %1$s</string>
     <string name="splash_first_time_button">はじめる</string>
     <string name="splash_error_label">エラーです。アプリを再度実行してください。</string>
 
