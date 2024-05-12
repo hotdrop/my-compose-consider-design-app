@@ -35,6 +35,10 @@ data class SplashUiData(val appSetting: AppSetting) {
         return appSetting.userId
     }
 
+    fun isInitialized(): Boolean {
+        return appSetting.userId != null
+    }
+
     companion object {
         fun createEmpty(): SplashUiData {
             return SplashUiData(AppSetting())

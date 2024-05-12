@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -32,7 +33,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.hilt.navigation.compose.hiltViewModel
 import jp.hotdrop.compose_design_app.R
-import jp.hotdrop.compose_design_app.models.AppSetting
 import jp.hotdrop.compose_design_app.ui.components.AppDialogOnlyOk
 import jp.hotdrop.compose_design_app.ui.theme.ComposedesignappTheme
 
@@ -52,7 +52,7 @@ fun SplashPage(
                 .padding(padding)
                 .fillMaxSize()) {
                 when (state) {
-                    is SplashState.Success -> ViewOnSuccess()
+                    is SplashState.Success -> ViewOnSuccess(state.uiData)
                     is SplashState.Loading -> ViewOnLoading(state.uiData.getUserId())
                     is SplashState.Error -> ViewOnError(errorMsg = state.errorMsg)
                 }
@@ -62,10 +62,37 @@ fun SplashPage(
 }
 
 @Composable
-private fun ViewOnSuccess() {
-    // TODO
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text("Success")
+private fun ViewOnSuccess(uiData: SplashUiData) {
+    if (uiData.isInitialized()) {
+        // TODO 非同期でHomePageに遷移する
+        ViewOnLoading(userId = uiData.getUserId())
+    } else {
+        ViewFirstPage()
+    }
+}
+
+@Composable
+private fun ViewFirstPage(modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 36.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.start),
+            contentDescription = "Start Image",
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(text = stringResource(id = R.string.first_start_overview))
+        Button(
+            onClick = { /*TODO StartPageに遷移する */ },
+            modifier = Modifier.padding(horizontal = 36.dp, vertical = 16.dp)
+        ) {
+            Text(text = stringResource(id = R.string.first_start_first_time_button))
+        }
     }
 }
 
@@ -74,7 +101,7 @@ private fun ViewOnLoading(userId: String?) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 36.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -118,11 +145,17 @@ private fun ViewOnError(errorMsg: String) {
 
 @Preview(showBackground = true)
 @Composable
+private fun ViewOnSuccessPreview() {
+    ComposedesignappTheme {
+        ViewFirstPage()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
 private fun ViewLoadingWithUserIdViewPreview() {
     ComposedesignappTheme {
-        Box(modifier = Modifier.fillMaxSize()) {
-            ViewOnLoading(userId = "1234567890")
-        }
+        ViewOnLoading(userId = "1234567890")
     }
 }
 
@@ -130,9 +163,7 @@ private fun ViewLoadingWithUserIdViewPreview() {
 @Composable
 private fun ViewLoadingNonUserIdViewPreview() {
     ComposedesignappTheme {
-        Box(modifier = Modifier.fillMaxSize()) {
-            ViewOnLoading(userId = null)
-        }
+        ViewOnLoading(userId = null)
     }
 }
 
@@ -140,8 +171,6 @@ private fun ViewLoadingNonUserIdViewPreview() {
 @Composable
 private fun ViewOnErrorPreview() {
     ComposedesignappTheme {
-        Box(modifier = Modifier.fillMaxSize()) {
-            ViewOnError(errorMsg = "ダイアログメッセージです。表示されません")
-        }
+        ViewOnError(errorMsg = "エラーのダイアログメッセージです。")
     }
 }
