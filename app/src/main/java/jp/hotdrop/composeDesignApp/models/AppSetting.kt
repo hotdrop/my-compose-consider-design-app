@@ -1,4 +1,4 @@
-package jp.hotdrop.compose_design_app.models
+package jp.hotdrop.composeDesignApp.models
 
 data class AppSetting(
     val userId: String? = null,

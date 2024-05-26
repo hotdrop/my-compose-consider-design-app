@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "jp.hotdrop.compose_design_app"
+    namespace = "jp.hotdrop.composeDesignApp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "jp.hotdrop.compose_design_app"
+        applicationId = "jp.hotdrop.composeDesignApp"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

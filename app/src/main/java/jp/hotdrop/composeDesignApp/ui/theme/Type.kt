@@ -1,4 +1,4 @@
-package jp.hotdrop.compose_design_app.ui.theme
+package jp.hotdrop.composeDesignApp.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

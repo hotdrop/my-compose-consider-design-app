@@ -1,4 +1,4 @@
-package jp.hotdrop.compose_design_app.ui.theme
+package jp.hotdrop.composeDesignApp.ui.theme
 
 import android.app.Activity
 import android.os.Build

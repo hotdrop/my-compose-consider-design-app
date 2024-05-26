@@ -1,4 +1,4 @@
-package jp.hotdrop.compose_design_app.ui.start
+package jp.hotdrop.composeDesignApp.ui.start
 
 import android.app.Activity
 import androidx.compose.foundation.Image
@@ -32,9 +32,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.hilt.navigation.compose.hiltViewModel
-import jp.hotdrop.compose_design_app.R
-import jp.hotdrop.compose_design_app.ui.components.AppDialogOnlyOk
-import jp.hotdrop.compose_design_app.ui.theme.ComposedesignappTheme
+import jp.hotdrop.composeDesignApp.ui.components.AppDialogOnlyOk
+import jp.hotdrop.composeDesignApp.ui.theme.ComposedesignappTheme
+import jp.hotdrop.composeDesignApp.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

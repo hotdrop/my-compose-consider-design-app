@@ -1,9 +1,9 @@
-package jp.hotdrop.compose_design_app.ui.start
+package jp.hotdrop.composeDesignApp.ui.start
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import jp.hotdrop.compose_design_app.models.AppSetting
+import jp.hotdrop.composeDesignApp.models.AppSetting
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch

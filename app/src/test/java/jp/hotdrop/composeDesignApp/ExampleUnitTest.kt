@@ -1,4 +1,4 @@
-package jp.hotdrop.compose_design_app
+package jp.hotdrop.composeDesignApp
 
 import org.junit.Test
 
