@@ -1,6 +1,7 @@
 package jp.hotdrop.composeDesignApp.ui.start
 
 import android.app.Activity
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -30,20 +31,20 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.hilt.navigation.compose.hiltViewModel
 import jp.hotdrop.composeDesignApp.ui.components.AppDialogOnlyOk
 import jp.hotdrop.composeDesignApp.ui.theme.ComposedesignappTheme
 import jp.hotdrop.composeDesignApp.R
+import jp.hotdrop.composeDesignApp.ui.NavigationViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SplashPage(
-    navController: NavController,
     viewModel: SplashViewModel = hiltViewModel()
 ) {
     Scaffold(
         topBar = {
+            // TODO 色や配置をStartPageにあわせる
             TopAppBar(title = { Text(stringResource(id = R.string.splash_title)) })
         },
         content = { padding ->
@@ -72,7 +73,10 @@ private fun ViewOnSuccess(uiData: SplashUiData) {
 }
 
 @Composable
-private fun ViewFirstPage(modifier: Modifier = Modifier) {
+private fun ViewFirstPage(
+    modifier: Modifier = Modifier,
+    navigationViewModel: NavigationViewModel = hiltViewModel(LocalContext.current as ComponentActivity)
+) {
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -88,7 +92,7 @@ private fun ViewFirstPage(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(16.dp))
         Text(text = stringResource(id = R.string.first_start_overview))
         Button(
-            onClick = { /*TODO StartPageに遷移する */ },
+            onClick = { navigationViewModel.toStartPage() },
             modifier = Modifier.padding(horizontal = 36.dp, vertical = 16.dp)
         ) {
             Text(text = stringResource(id = R.string.first_start_first_time_button))

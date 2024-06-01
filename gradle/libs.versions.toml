@@ -13,7 +13,6 @@ navigationCompose = "2.7.7"
 ui = "1.6.7"
 hiltAndroid = "2.51.1"
 kspVersion = "1.9.0-1.0.13"
-hiltLifecycleViewmodel = "1.0.0-alpha03"
 hiltNavigationCompose = "1.2.0"
 
 [libraries]
@@ -36,7 +35,6 @@ androidx-navigation-compose = { group = "androidx.navigation", name = "navigatio
 ui = { group = "androidx.compose.ui", name = "ui", version.ref = "ui" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltAndroid" }
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hiltAndroid" }
-androidx-hilt-lifecycle-viewmodel = { group = "androidx.hilt", name = "hilt-lifecycle-viewmodel", version.ref = "hiltLifecycleViewmodel" }
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 
 [plugins]
