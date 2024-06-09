@@ -142,7 +142,7 @@ private fun ViewOnError(errorMsg: String) {
     val context = LocalContext.current
     var showDialog by remember { mutableStateOf(false) }
 
-    // ダイアログを表示するためのLaunchedEffect
+    // LaunchedEffectを使用して1度しかダイアログを表示しないよう制御している
     LaunchedEffect(key1 = true) {
         showDialog = true
     }
@@ -150,6 +150,7 @@ private fun ViewOnError(errorMsg: String) {
     if (showDialog) {
         AppDialogOnlyOk(
             message = errorMsg,
+            dismissOnOutsideTap = false,
             onOk = {
                 (context as? Activity)?.finish()
             }
